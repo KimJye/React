@@ -1,0 +1,8 @@
+.name{
+    display: inline-block;
+    border: 1px solid lightgray;
+    background-color: orange;
+    padding: 5px;
+    margin: 3px;
+    font-size: 1em;
+}

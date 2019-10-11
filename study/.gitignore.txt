@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+/study/*.aaaaa.txt
+# dependencies
+/study/*lecture/*node_modules/*
+/study/*lecture/*.pnp
+/study/*lecture/*.pnp.js
+
+# testing
+/study/*lecture/*coverage/*
+
+# production
+/study/*lecture/*build/*
+
+# misc
+/study/*lecture/*DS_Store/*
+/study/*lecture/*.env.local
+/study/*lecture/*.env.development.local
+/study/*lecture/*.env.test.local
+/study/*lecture/*.env.production.local
+
+/study/*lecture/*npm-debug.log*
+/study/*lecture/*yarn-debug.log*
+/study/*lecture/*yarn-error.log*

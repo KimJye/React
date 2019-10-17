@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
+import classes from './App.css';
 
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 const App = () => {
   const [personsState, setPersonsState] = useState({
@@ -46,49 +47,42 @@ const App = () => {
     });
   }
 
-  const style={
-    backgroundColor: "green",
-    color: "white",
-    font: 'inherit',
-    border: '1px solid blue',
-    padding: '8px',
-    cursor: "pointer"
-  };
-
   let persons = null;
+  let btnClass = '';
 
   if(personsState.showPersons){
     persons = 
     (<div>
       {personsState.persons.map((person, index) => {
-        return <Person 
-          click={()=>deletePersonHandler(index)}
-          name={person.name} 
-          age={person.age}
-          key={person.id}
-          changed={(event)=> nameChangedHandler(event, person.id)}/>
+        return <ErrorBoundary>
+          <Person 
+            click={()=>deletePersonHandler(index)}
+            name={person.name} 
+            age={person.age}
+            key={person.id}
+            changed={(event)=> nameChangedHandler(event, person.id)}/>
+        </ErrorBoundary>
       })}
     </div> 
     );
 
-    style.backgroundColor = 'red'
+    btnClass = classes.Red;
   }
 
-  const classes = []
+  const assignedClasses = []
   if(personsState.persons.length <=2){
-    classes.push('red')
+    assignedClasses.push( classes.red)
   }
 
   if(personsState.persons.length<=1){
-    classes.push('bold')
+    assignedClasses.push( classes.bold)
   }
 
   return (
-    <div className="App">
+    <div className={classes.App}>
       <h1>Hi, I'm a React App</h1>
-      <p className={classes.join(' ')}>kimjye</p>
-      <button
-        style={style} 
+      <p className={assignedClasses.join(' ')}>kimjye</p>
+      <button className={btnClass}
         onClick={togglePersonsHandler}>toggle person</button>
         {persons}
     </div>

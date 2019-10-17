@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+
 import Person from './Person/Person';
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
     });
 
     const person = {...personsState[personIndex]};
-    
+
     person.name = event.target.name.value;
 
     const persons = [...personsState.persons];
@@ -46,7 +47,8 @@ const App = () => {
   }
 
   const style={
-    backgroundColor: "white",
+    backgroundColor: "green",
+    color: "white",
     font: 'inherit',
     border: '1px solid blue',
     padding: '8px',
@@ -68,16 +70,28 @@ const App = () => {
       })}
     </div> 
     );
+
+    style.backgroundColor = 'red'
   }
+
+  const classes = []
+  if(personsState.persons.length <=2){
+    classes.push('red')
+  }
+
+  if(personsState.persons.length<=1){
+    classes.push('bold')
+  }
+
   return (
-  <div className="App">
-    <h1>Hi, I'm a React App</h1>
-    <p>kimjye</p>
-    <button
-      style={style} 
-      onClick={togglePersonsHandler}>toggle person</button>
-      {persons}
-  </div>
+    <div className="App">
+      <h1>Hi, I'm a React App</h1>
+      <p className={classes.join(' ')}>kimjye</p>
+      <button
+        style={style} 
+        onClick={togglePersonsHandler}>toggle person</button>
+        {persons}
+    </div>
   );
 }
 
